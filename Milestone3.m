@@ -12,7 +12,7 @@ while (1)
     pressed2 = brick.TouchPressed(2);
 
     if (pressed1 || pressed2)
-        brick.playTone(100, 500, 1);
+        % brick.playTone(100, 500, 1);
         if (pressed1) 
             disp('Collision detected! (Right)');
         end
@@ -42,7 +42,7 @@ while (1)
             disp('Down Arrow Pressed!');
             brick.MoveMotor('AB', (speed / 100 ) * (-33));
             % Reverse beeper
-            brick.playTone(100, 300, 1);
+            % brick.playTone(100, 300, 1);
         case 'a'
             disp('Left Arrow Pressed!');
             brick.MoveMotor('A', (speed / 100 ) * 50);
@@ -54,6 +54,7 @@ while (1)
         case 'shift'
             disp('Handbrake Pressed!');
             brick.StopAllMotors('Brake');
+            clc
         % MT gear up
         case 'r'
             if (speed == 33)
@@ -87,7 +88,7 @@ while (1)
         case 'q'
             break;
         otherwise
-            brick.StopAllMotors('Coast');
+            brick.StopMotor('AB', 'Coast');
     end
 end
 CloseKeyboard();
